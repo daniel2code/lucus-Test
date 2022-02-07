@@ -34,9 +34,9 @@ const Index = () => {
       <Box w="100%" margin="50px 0px">
         <Table>
           <TableRow>
-            <TableHead>Title</TableHead>
+            <TableHead>Id</TableHead>
             <TableHead>Body</TableHead>
-            <TableHead>ID</TableHead>
+            <TableHead>Title</TableHead>
             <TableHead>Actions</TableHead>
           </TableRow>
 
