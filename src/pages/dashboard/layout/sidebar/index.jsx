@@ -14,7 +14,7 @@ const Index = () => {
   const navigate = useNavigate();
 
   const logout = () => {
-    localStorage.clear();
+    // localStorage.clear();
     navigate("/")
     window.location.reload(false)
   };

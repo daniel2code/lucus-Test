@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Box } from "../../../components/box";
 import {
@@ -7,17 +7,30 @@ import {
   TableHead,
   TableRow,
 } from "../../../components/tables";
+import { Button } from "../../../components/buttonStyles"
+import Pagination from "../../../components/pagination/index";
 import { Text } from "./tableListStyles";
 import { useGetRequest } from "../../../helpers/requestHelpers";
 
 const Index = () => {
   const { data, loading, makeGetRequest } = useGetRequest();
 
+  const [tracker, setTracker] = useState(10);
+  const [num, setNum] = useState(1);
+
+  const updateTracker = (e) => {
+    setTracker(e.target.value);
+  };
+
   useEffect(() => {
     makeGetRequest("posts");
-  }, []);
+  }, [tracker, num]);
 
   console.log(data);
+
+  const calculateTracker = () => {
+    return num * tracker;
+  };
 
   return (
     <Box
@@ -41,7 +54,7 @@ const Index = () => {
           </TableRow>
 
           {data &&
-            data.slice(0, 25).map((item) => {
+            data.slice(0, calculateTracker()).map((item) => {
               return (
                 <TableRow w="100%" bg="#1A1A20" h="50px" br="10px">
                   <TableData w="10%">{item?.userId}</TableData>
@@ -53,6 +66,15 @@ const Index = () => {
             })}
         </Table>
       </Box>
+
+      <Pagination
+        tracker={tracker}
+        updateTracker={updateTracker}
+        data={data}
+        num={num}
+        setNum={setNum}
+        // calculateTracker={calculateTracker}
+      />
     </Box>
   );
 };

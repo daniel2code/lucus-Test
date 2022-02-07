@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { colorPallet } from "../config/theme"
+import { colorPallet } from "../config/theme";
 
 export const FormBox = styled.form`
   width: ${(props) => (props.w ? props.w : "80%")};
@@ -48,5 +48,16 @@ export const Label = styled.label`
   font-size: ${(props) => (props.fs ? props.fs : "16px")};
   color: ${(props) => (props.color ? props.color : "")};
   font-weight: ${(props) => (props.fw ? props.fw : "600")};
-  box-sizing: border-box;
+`;
+
+export const Select = styled.select`
+  width: ${(props) => (props.smw ? props.smw : "80px")};
+  height: ${(props) => (props.smh ? props.smh : "30px")};
+  border: ${(props) => (props.border ? props.border : "none")};
+`;
+
+export const Options = styled.option`
+  font-size: ${(props) => (props.fs ? props.fs : "16px")};
+  color: ${(props) => (props.color ? props.color : "")};
+  font-weight: ${(props) => (props.fw ? props.fw : "600")};
 `;
