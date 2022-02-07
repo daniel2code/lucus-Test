@@ -1,6 +1,9 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useState } from "react";
 
-import { Link } from "react-router-dom";
+// import { useSelector, useDispatch } from "react-redux";
+// import { createUser } from "../../store/actions/index";
+import Toaster from "../../components/toaster/index";
+import { Link, useNavigate } from "react-router-dom";
 import { formReducer } from "../../helpers/formReducer";
 import { Box } from "../../components/box";
 import { FormBox, Input, Label } from "../../components/inputStyles";
@@ -10,6 +13,14 @@ import { colorPallet } from "../../config/theme";
 import { SmallText, Text } from "./signUpStyles";
 
 const Index = () => {
+  const [message, setMessage] = useState("");
+  const [openToaster, setOpenToaster] = useState(false);
+
+  //   const signupUser = useSelector((state) => state.signup);
+  //   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
     setFormValues({
       name: e.target.name,
@@ -19,7 +30,26 @@ const Index = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formValues);
+    let checkUser = localStorage.getItem("user");
+
+    return new Promise((resolve, reject) => {
+      if (!checkUser) {
+        localStorage.setItem("user", JSON.stringify(formValues));
+        resolve();
+      } else {
+        return reject("User already exists");
+      }
+    })
+      .then(() => {
+        console.log("user saved successfully");
+        setMessage({ error: false, text: "User saved successfully" });
+        setOpenToaster(true);
+        navigate("/");
+      })
+      .catch((err) => {
+        setMessage({ error: true, text: "User already exists" });
+        setOpenToaster(true);
+      });
   };
 
   const [formValues, setFormValues] = useReducer(formReducer, {});
@@ -33,6 +63,11 @@ const Index = () => {
       </Box>
 
       <FormBox w="600px" bg="#1A1A20" pd="30px" onSubmit={handleSubmit}>
+        <Toaster
+          open={openToaster}
+          message={message}
+          setOpen={setOpenToaster}
+        />
         <Box
           display="flex"
           direction="column"
@@ -103,7 +138,7 @@ const Index = () => {
           color={colorPallet.textColor}
           fs="17px"
         >
-          Login
+          Sign Up
         </Button>
 
         <SmallText>

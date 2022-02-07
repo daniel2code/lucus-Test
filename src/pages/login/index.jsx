@@ -1,6 +1,9 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useState } from "react";
 
-import { Link } from "react-router-dom";
+import Toaster from "../../components/toaster/index";
+import { useSelector, useDispatch } from "react-redux";
+import { logUser } from "../../store/actions";
+import { Link, useNavigate } from "react-router-dom";
 import { formReducer } from "../../helpers/formReducer";
 import { Box } from "../../components/box";
 import { FormBox, Input, Label } from "../../components/inputStyles";
@@ -10,6 +13,13 @@ import { colorPallet } from "../../config/theme";
 import { SmallText, Text } from "./loginStyles";
 
 const Index = () => {
+  const [message, setMessage] = useState("");
+  const [openToaster, setOpenToaster] = useState(false);
+
+  const login = useSelector((state) => state.login);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
     setFormValues({
       name: e.target.name,
@@ -20,6 +30,29 @@ const Index = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formValues);
+
+    return new Promise((resolve, reject) => {
+      if (
+        formValues.email === login.user.email &&
+        formValues.password === login.user.password
+      ) {
+        resolve();
+      } else {
+        reject("Incorrect credentials");
+      }
+    })
+      .then(() => {
+        dispatch(logUser());
+        navigate("/dashboard");
+        setMessage({ error: false, text: "Successfully logged in" });
+        setOpenToaster(true);
+        // console.log("Successfully logged in");
+      })
+      .catch((err) => {
+        setMessage({ error: true, text: "Incorrect credentials" });
+        setOpenToaster(true);
+        console.log(err);
+      });
   };
 
   const [formValues, setFormValues] = useReducer(formReducer, {});
@@ -32,6 +65,11 @@ const Index = () => {
       </Box>
 
       <FormBox w="600px" bg="#1A1A20" pd="30px" onSubmit={handleSubmit}>
+        <Toaster
+          open={openToaster}
+          message={message}
+          setOpen={setOpenToaster}
+        />
         <Box
           display="flex"
           direction="column"
@@ -41,7 +79,15 @@ const Index = () => {
         >
           <Label fs="14px">Email</Label>
           <Spacer mt="5px" />
-          <Input bg="#111115" h="50px" border="1px solid gray" type="email" onChange={handleChange} required name="email" />
+          <Input
+            bg="#111115"
+            h="50px"
+            border="1px solid gray"
+            type="email"
+            onChange={handleChange}
+            required
+            name="email"
+          />
         </Box>
 
         <Box
@@ -59,7 +105,9 @@ const Index = () => {
             h="50px"
             border="1px solid gray"
             type="password"
-            onChange={handleChange} required name="password"
+            onChange={handleChange}
+            required
+            name="password"
           />
         </Box>
 
