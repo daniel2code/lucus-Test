@@ -3,7 +3,7 @@ import React from "react";
 import { Box } from "../../../../components/box";
 import { Image } from "../../../../components/image";
 import { SmallText } from "./sidebarStyles";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import homeIcon from "../../../../assets/home.png";
 import todoIcon from "../../../../assets/to-do-list.png";
@@ -11,6 +11,14 @@ import galleryIcon from "../../../../assets/gallery.png";
 import logoutIcon from "../../../../assets/logout.png";
 
 const Index = () => {
+  const navigate = useNavigate();
+
+  const logout = () => {
+    localStorage.clear();
+    window.location.reload(false)
+    navigate("/")
+  };
+
   return (
     <Box
       display="flex"
@@ -71,9 +79,10 @@ const Index = () => {
           align="center"
           gap="17px"
           margin="10px 0px"
+          onClick={logout}
         >
           <Image w="20px" src={logoutIcon} alt="icon" />
-          <SmallText>Logout</SmallText>
+          <SmallText style={{cursor: "pointer"}}>Logoubt</SmallText>
         </Box>
       </Box>
     </Box>
