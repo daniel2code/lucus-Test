@@ -16,23 +16,29 @@ import { colorPallet } from "../../../config/theme";
 import { useGetRequest } from "../../../helpers/requestHelpers";
 
 const Index = () => {
-  const { data, loading, makeGetRequest } = useGetRequest();
+  const { makeGetRequest } = useGetRequest();
 
+  const [tableData, setTableData] = useState(null);
   const [tracker, setTracker] = useState(10);
   const [num, setNum] = useState(1);
+  const [filterNum, setFilterNum] = useState(1);
 
   const updateTracker = (e) => {
     setTracker(e.target.value);
   };
 
   useEffect(() => {
-    makeGetRequest("posts");
-  }, [tracker, num]);
+    makeGetRequest("posts", setTableData);
+  }, [tracker, num, filterNum]);
 
-  console.log(data);
-
+  // Create a slice calculator
   const calculateTracker = () => {
     return num * tracker;
+  };
+
+  // Filter data according to select result
+  const filterData = () => {
+    setTableData(tableData.filter((item) => item.userId === +filterNum));
   };
 
   return (
@@ -53,7 +59,7 @@ const Index = () => {
 
         <Box display="flex" direction="row" align="center" gap="15px">
           <Text>Filter by ID:</Text>
-          <Select br="5px">
+          <Select br="5px" onChange={(e) => setFilterNum(e.target.value)}>
             <Options value="1">1</Options>
             <Options value="2">2</Options>
             <Options value="3">3</Options>
@@ -73,6 +79,7 @@ const Index = () => {
             w="55px"
             bg={colorPallet.secondaryColor}
             color={colorPallet.textColor}
+            onClick={() => filterData()}
           >
             Filter
           </Button>
@@ -88,10 +95,10 @@ const Index = () => {
             <TableHead>Actions</TableHead>
           </TableRow>
 
-          {data &&
-            data.slice(0, calculateTracker()).map((item) => {
+          {tableData &&
+            tableData.slice(0, calculateTracker()).map((item) => {
               return (
-                <TableRow w="100%" bg="#1A1A20" h="50px" br="10px">
+                <TableRow w="100%" bg="#1A1A20" h="50px" br="10px" key={item.id}>
                   <TableData w="10%">{item?.userId}</TableData>
                   <TableData w="35%">{item?.title}</TableData>
                   <TableData w="45%">{item?.body}</TableData>
@@ -116,7 +123,7 @@ const Index = () => {
       <Pagination
         tracker={tracker}
         updateTracker={updateTracker}
-        data={data}
+        data={tableData}
         num={num}
         setNum={setNum}
       />

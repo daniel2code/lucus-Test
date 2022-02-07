@@ -1,5 +1,6 @@
 import React from "react";
 
+import { useSelector } from "react-redux";
 import { Box } from "../../../../components/box";
 import { Image } from "../../../../components/image";
 import { Text, SmallText } from "./topbarStyles";
@@ -8,6 +9,7 @@ import avatar from "../../../../assets/avatar.png";
 import dropdown from "../../../../assets/dropdown.png";
 
 const Index = () => {
+  const login = useSelector((state) => state.login);
   return (
     <Box
       display="flex"
@@ -30,9 +32,15 @@ const Index = () => {
         </Box>
 
         <Box display="flex" gap="15px" direction="row">
-          <Box display="flex" justify="center" align="center" direction="row" gap="10px">
+          <Box
+            display="flex"
+            justify="center"
+            align="center"
+            direction="row"
+            gap="10px"
+          >
             <Image src={dropdown} alt="icon" w="10px" />
-            <SmallText>Daniel</SmallText>
+            <SmallText>{login.user.name}</SmallText>
           </Box>
 
           <Image src={avatar} alt="icon" w="40px" h="40px" />

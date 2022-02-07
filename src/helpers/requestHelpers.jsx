@@ -5,7 +5,7 @@ export const useGetRequest = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState(null);
 
-  const makeGetRequest = (url) => {
+  const makeGetRequest = (url, cb) => {
     setLoading(true);
     API({
       url,
@@ -13,6 +13,7 @@ export const useGetRequest = () => {
     })
       .then((res) => {
         console.log(res.data);
+        cb(res.data)
         setData(res.data);
         setLoading(true);
       })
