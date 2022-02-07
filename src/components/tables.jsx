@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Table = styled.table`
   width: ${(props) => (props.w ? props.w : "100%")};
   box-sizing: border-box;
-  border-collapse: collapse;
+  /* border-collapse: collapse; */
 `;
 export const TableHead = styled.th`
   font-size: ${(props) => (props.fs ? props.fs : "16px")};
@@ -28,4 +28,5 @@ export const TableData = styled.td`
   width: ${(props) => (props.w ? props.w : "")};
   text-align: left;
   border-bottom: 1px solid #ddd;
+  padding: 10px 15px;
 `;

@@ -40,16 +40,17 @@ const Index = () => {
             <TableHead>Actions</TableHead>
           </TableRow>
 
-          {[...Array(7)].map(() => {
-            return (
-              <TableRow w="100%" bg="#1A1A20" h="50px" br="10px">
-                <TableData>Testing</TableData>
-                <TableData>Testing</TableData>
-                <TableData>Testing</TableData>
-                <TableData>Testing</TableData>
-              </TableRow>
-            );
-          })}
+          {data &&
+            data.slice(0, 25).map((item) => {
+              return (
+                <TableRow w="100%" bg="#1A1A20" h="50px" br="10px">
+                  <TableData w="10%">{item?.userId}</TableData>
+                  <TableData w="35%">{item?.title}</TableData>
+                  <TableData w="45%">{item?.body}</TableData>
+                  <TableData w="10%">{item?.id}</TableData>
+                </TableRow>
+              );
+            })}
         </Table>
       </Box>
     </Box>
