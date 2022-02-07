@@ -6,7 +6,6 @@ const initialState = {
 
 export const loginReducer = (state = initialState, action) => {
   if (action === "LOGIN") {
-    console.log("fired");
     return{
         ...state,
         message: "Login succesful",

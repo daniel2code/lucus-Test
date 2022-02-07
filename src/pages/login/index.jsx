@@ -29,12 +29,12 @@ const Index = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formValues);
+    console.log(JSON.parse(localStorage.getItem("user")));
 
     return new Promise((resolve, reject) => {
       if (
-        formValues.email === login.user.email &&
-        formValues.password === login.user.password
+        login?.user?.email === formValues?.email ||
+        login?.user?.password === formValues?.password
       ) {
         resolve();
       } else {
@@ -42,7 +42,7 @@ const Index = () => {
       }
     })
       .then(() => {
-        dispatch(logUser());
+        // dispatch(logUser());
         navigate("/dashboard");
         setMessage({ error: false, text: "Successfully logged in" });
         setOpenToaster(true);
