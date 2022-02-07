@@ -54,10 +54,11 @@ export const Select = styled.select`
   width: ${(props) => (props.smw ? props.smw : "80px")};
   height: ${(props) => (props.smh ? props.smh : "30px")};
   border: ${(props) => (props.border ? props.border : "none")};
+  border-radius: ${(props) => (props.br ? props.br : "none")};
 `;
 
 export const Options = styled.option`
   font-size: ${(props) => (props.fs ? props.fs : "16px")};
   color: ${(props) => (props.color ? props.color : "")};
-  font-weight: ${(props) => (props.fw ? props.fw : "600")};
+  font-weight: ${(props) => (props.fw ? props.fw : "500")};
 `;

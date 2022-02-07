@@ -22,7 +22,7 @@ const Index = ({ data, tracker, updateTracker, num, setNum }) => {
       bg="#1A1A20"
     >
       <Box display="flex" direction="row">
-        <Select w="60px" onChange={updateTracker}>
+        <Select w="60px" onChange={updateTracker} br="5px">
           <Options value="10">10</Options>
           <Options value="25">25</Options>
           <Options value="50">50</Options>

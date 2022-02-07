@@ -7,10 +7,12 @@ import {
   TableHead,
   TableRow,
 } from "../../../components/tables";
+import { Select, Options } from "../../../components/inputStyles";
 import { Button } from "../../../components/buttonStyles";
 import Pagination from "../../../components/pagination/index";
+// import Modal from "../../../components/modals/index";
 import { Text } from "./tableListStyles";
-import { colorPallet } from "../../../config/theme"
+import { colorPallet } from "../../../config/theme";
 import { useGetRequest } from "../../../helpers/requestHelpers";
 
 const Index = () => {
@@ -40,10 +42,42 @@ const Index = () => {
       align="flex-start"
       pd="30px 5%"
       w="100%"
+      style={{ position: "relative" }}
     >
-      <Text fs="29px" fw="600">
-        Table Data
-      </Text>
+      {/* <Modal /> */}
+
+      <Box display="flex" direction="row" justify="space-between" w="100%">
+        <Text fs="29px" fw="600">
+          Table Data
+        </Text>
+
+        <Box display="flex" direction="row" align="center" gap="15px">
+          <Text>Filter by ID:</Text>
+          <Select br="5px">
+            <Options value="1">1</Options>
+            <Options value="2">2</Options>
+            <Options value="3">3</Options>
+            <Options value="4">4</Options>
+            <Options value="5">5</Options>
+            <Options value="6">6</Options>
+            <Options value="7">7</Options>
+            <Options value="8">8</Options>
+            <Options value="9">9</Options>
+            <Options value="10">10</Options>
+          </Select>
+
+          <Button
+            br="5px"
+            fs
+            h="30px"
+            w="55px"
+            bg={colorPallet.secondaryColor}
+            color={colorPallet.textColor}
+          >
+            Filter
+          </Button>
+        </Box>
+      </Box>
 
       <Box w="100%" margin="50px 0px">
         <Table>
@@ -85,7 +119,6 @@ const Index = () => {
         data={data}
         num={num}
         setNum={setNum}
-        // calculateTracker={calculateTracker}
       />
     </Box>
   );
