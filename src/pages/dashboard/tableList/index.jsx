@@ -7,9 +7,10 @@ import {
   TableHead,
   TableRow,
 } from "../../../components/tables";
-import { Button } from "../../../components/buttonStyles"
+import { Button } from "../../../components/buttonStyles";
 import Pagination from "../../../components/pagination/index";
 import { Text } from "./tableListStyles";
+import { colorPallet } from "../../../config/theme"
 import { useGetRequest } from "../../../helpers/requestHelpers";
 
 const Index = () => {
@@ -60,7 +61,18 @@ const Index = () => {
                   <TableData w="10%">{item?.userId}</TableData>
                   <TableData w="35%">{item?.title}</TableData>
                   <TableData w="45%">{item?.body}</TableData>
-                  <TableData w="10%">{item?.id}</TableData>
+                  <TableData w="10%">
+                    <Button
+                      br="5px"
+                      fs
+                      h="30px"
+                      w="55px"
+                      bg={colorPallet.secondaryColor}
+                      color={colorPallet.textColor}
+                    >
+                      Edit
+                    </Button>
+                  </TableData>
                 </TableRow>
               );
             })}
