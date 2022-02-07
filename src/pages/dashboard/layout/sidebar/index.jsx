@@ -15,8 +15,8 @@ const Index = () => {
 
   const logout = () => {
     localStorage.clear();
-    window.location.reload(false)
     navigate("/")
+    window.location.reload(false)
   };
 
   return (
@@ -82,7 +82,7 @@ const Index = () => {
           onClick={logout}
         >
           <Image w="20px" src={logoutIcon} alt="icon" />
-          <SmallText style={{cursor: "pointer"}}>Logoubt</SmallText>
+          <SmallText style={{cursor: "pointer"}}>Logout</SmallText>
         </Box>
       </Box>
     </Box>

@@ -45,6 +45,7 @@ const Index = () => {
         setMessage({ error: false, text: "User saved successfully" });
         setOpenToaster(true);
         navigate("/");
+        window.location.reload(false)
       })
       .catch((err) => {
         setMessage({ error: true, text: "User already exists" });
