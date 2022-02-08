@@ -15,6 +15,7 @@ export const Box = styled.div`
   max-height: ${(props) => (props.mh ? props.mh : "")};
   border-radius: ${(props) => (props.radius ? props.radius : "")};
   border-bottom: ${(props) => (props.bb ? props.bb : "none")};
+  position: ${props=> props.position ? props.position : "" };
 
 
   @media screen and (max-width: 1000px) {
