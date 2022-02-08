@@ -86,19 +86,27 @@ const Index = () => {
 
             <Box display="flex" justify="flex-start" align="flex-start">
               <LinkText>
-                <Link to="/dashboard" className="link">
+                <Link to="/dashboard" className="link" onClick={handleOpenMenu}>
                   Home
                 </Link>
               </LinkText>
 
               <LinkText>
-                <Link to="/dashboard/photo" className="link">
+                <Link
+                  to="/dashboard/photo"
+                  className="link"
+                  onClick={handleOpenMenu}
+                >
                   Photo Gallery
                 </Link>
               </LinkText>
 
               <LinkText>
-                <Link to="/dashboard/todo" className="link">
+                <Link
+                  to="/dashboard/todo"
+                  className="link"
+                  onClick={handleOpenMenu}
+                >
                   Todo
                 </Link>
               </LinkText>
