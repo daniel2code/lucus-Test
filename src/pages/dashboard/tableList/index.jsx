@@ -53,7 +53,7 @@ const Index = () => {
       {/* <Modal /> */}
 
       <Box display="flex" direction="row" justify="space-between" w="100%">
-        <Text fs="29px" fw="600">
+        <Text fs="29px" fw="600" sdisplay="none">
           Table Data
         </Text>
 
@@ -98,7 +98,13 @@ const Index = () => {
           {tableData &&
             tableData.slice(0, calculateTracker()).map((item) => {
               return (
-                <TableRow w="100%" bg="#1A1A20" h="50px" br="10px" key={item.id}>
+                <TableRow
+                  w="100%"
+                  bg="#1A1A20"
+                  h="50px"
+                  br="10px"
+                  key={item.id}
+                >
                   <TableData w="10%">{item?.userId}</TableData>
                   <TableData w="35%">{item?.title}</TableData>
                   <TableData w="45%">{item?.body}</TableData>

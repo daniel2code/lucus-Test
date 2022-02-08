@@ -8,4 +8,8 @@ export const Text = styled.p`
   color: ${colorPallet.textColor};
   margin: 0%;
   padding: ${(props) => (props.pd ? props.pd : "")};
+
+  @media screen and (max-width: 500px){
+    display: ${(props) => (props.sdisplay ? props.sdisplay : "")};
+  }
 `;

@@ -14,10 +14,19 @@ export const SideBarBox = styled.div`
   width: 250px;
   position: fixed;
   top: 80px;
+
+  @media screen and (max-width: 1000px) {
+    display: none;
+  }
 `;
 
 export const ContentBox = styled.div`
   width: calc(100% - 250px);
   margin-top: 80px;
   margin-left: 250px;
+
+  @media screen and (max-width: 1000px) {
+    width: 100%;
+    margin-left: 0px;
+  }
 `;

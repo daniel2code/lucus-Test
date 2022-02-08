@@ -13,14 +13,16 @@ const Index = () => {
       <Background>
         <ContentBox>
           <Box w="100%" display="flex" justify="flex-start" align="flex-start">
-            <SmallText fs="29px" fw="600" pd="0px 0px">
+            <SmallText fs="29px" smfs="20px" fw="600" pd="0px 0px">
               Photo Gallery
             </SmallText>
-            <SmallText pd="15px 0px">
+            <SmallText smfs="14px" pd="15px 0px">
               Get amazing images inspired by creativity
             </SmallText>
             <Input
               w="80%"
+              smh="30px"
+              smw="100%"
               bg="white"
               h="50px"
               border="1px solid gray"

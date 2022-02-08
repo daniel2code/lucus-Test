@@ -4,6 +4,10 @@ export const Table = styled.table`
   width: ${(props) => (props.w ? props.w : "100%")};
   box-sizing: border-box;
   /* border-collapse: collapse; */
+
+  @media screen and (max-width: 650px){
+ overflow-x: scroll;
+}
 `;
 export const TableHead = styled.th`
   font-size: ${(props) => (props.fs ? props.fs : "16px")};

@@ -10,13 +10,13 @@ export const FormBox = styled.form`
   box-sizing: border-box;
 
   @media screen and (max-width: 1000px) {
-    width: ${(props) => (props.mdw ? props.mdw : "80%")};
-    padding: ${(props) => (props.mdpd ? props.mdpd : "20px")};
+    width: ${(props) => (props.mdw ? props.mdw : "")};
+    padding: ${(props) => (props.mdpd ? props.mdpd : "")};
   }
 
   @media screen and (max-width: 650px) {
-    width: ${(props) => (props.smw ? props.smw : "80%")};
-    padding: ${(props) => (props.smpd ? props.smpd : "20px")};
+    width: ${(props) => (props.smw ? props.smw : "")};
+    padding: ${(props) => (props.smpd ? props.smpd : "")};
   }
 `;
 
@@ -32,15 +32,15 @@ export const Input = styled.input`
   box-sizing: border-box;
 
   @media screen and (max-width: 1000px) {
-    width: ${(props) => (props.mdw ? props.mdw : "80%")};
-    height: ${(props) => (props.mdh ? props.mdh : "40px")};
-    padding: ${(props) => (props.mdpd ? props.mdpd : "20px")};
+    width: ${(props) => (props.mdw ? props.mdw : "")};
+    height: ${(props) => (props.mdh ? props.mdh : "")};
+    padding: ${(props) => (props.mdpd ? props.mdpd : "")};
   }
 
   @media screen and (max-width: 650px) {
-    width: ${(props) => (props.smw ? props.smw : "80%")};
-    height: ${(props) => (props.smh ? props.smh : "40px")};
-    padding: ${(props) => (props.smpd ? props.smpd : "20px")};
+    width: ${(props) => (props.smw ? props.smw : "")};
+    height: ${(props) => (props.smh ? props.smh : "")};
+    padding: ${(props) => (props.smpd ? props.smpd : "")};
   }
 `;
 
@@ -55,6 +55,11 @@ export const Select = styled.select`
   height: ${(props) => (props.smh ? props.smh : "30px")};
   border: ${(props) => (props.border ? props.border : "none")};
   border-radius: ${(props) => (props.br ? props.br : "none")};
+
+  @media screen and (max-width: 650px) {
+    width: ${(props) => (props.smw ? props.smw : "")};
+    padding: ${(props) => (props.smpd ? props.smpd : "")};
+  }
 `;
 
 export const Options = styled.option`

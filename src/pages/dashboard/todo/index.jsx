@@ -76,7 +76,7 @@ const Index = () => {
         <Background />
 
         <ContentBox>
-          <Box w="600px">
+          <Box w="600px" smw="95%" >
             <Toaster
               open={openToaster}
               message={message}

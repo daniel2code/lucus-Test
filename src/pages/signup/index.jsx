@@ -45,7 +45,7 @@ const Index = () => {
         setMessage({ error: false, text: "User saved successfully" });
         setOpenToaster(true);
         navigate("/");
-        window.location.reload(false)
+        window.location.reload(false);
       })
       .catch((err) => {
         setMessage({ error: true, text: "User already exists" });
@@ -63,7 +63,14 @@ const Index = () => {
         <Spacer mb="40px" />
       </Box>
 
-      <FormBox w="600px" bg="#1A1A20" pd="30px" onSubmit={handleSubmit}>
+      <FormBox
+        w="600px"
+        smw="93%"
+        bg="#1A1A20"
+        smpd="30px 20px"
+        pd="30px"
+        onSubmit={handleSubmit}
+      >
         <Toaster
           open={openToaster}
           message={message}

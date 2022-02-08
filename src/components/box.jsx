@@ -22,10 +22,10 @@ export const Box = styled.div`
     height: ${(props) => (props.mdh ? props.mdh : "")};
     display: ${(props) => (props.mddisplay ? props.mddisplay : "")};
     justify-content: ${(props) =>
-      props.mdjustify ? props.mdjustify : "flex-start"};
+      props.mdjustify ? props.mdjustify : ""};
     align-items: ${(props) => (props.mdalign ? props.mdalign : "")};
     flex-direction: ${(props) =>
-      props.mddirection ? props.mddirection : "column"};
+      props.mddirection ? props.mddirection : ""};
   }
 
   @media screen and (max-width: 650px) {
@@ -33,9 +33,9 @@ export const Box = styled.div`
     height: ${(props) => (props.smh ? props.smh : "")};
     display: ${(props) => (props.smdisplay ? props.smdisplay : "")};
     justify-content: ${(props) =>
-      props.smjustify ? props.smjustify : "flex-start"};
+      props.smjustify ? props.smjustify : ""};
     align-items: ${(props) => (props.smalign ? props.smalign : "")};
     flex-direction: ${(props) =>
-      props.smdirection ? props.smdirection : "column"};
+      props.smdirection ? props.smdirection : ""};
   }
 `;

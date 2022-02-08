@@ -64,7 +64,14 @@ const Index = () => {
         <Spacer mb="40px" />
       </Box>
 
-      <FormBox w="600px" bg="#1A1A20" pd="30px" onSubmit={handleSubmit}>
+      <FormBox
+        w="600px"
+        smw="93%"
+        bg="#1A1A20"
+        pd="30px"
+        smpd="30px 20px"
+        onSubmit={handleSubmit}
+      >
         <Toaster
           open={openToaster}
           message={message}
